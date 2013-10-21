@@ -39,14 +39,15 @@ class Mandrill
                 curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
                 curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($arguments));
                 
+
                 $response = curl_exec($ch);
 
                 // catch errors
                 if (curl_errno($ch))
                 {
-                        #$errors = curl_error($ch);
+                        $errors = curl_error($ch);
                         curl_close($ch);
-                        return false;
+                        throw new Exception( $errors );
                 }
                 else
                 {
