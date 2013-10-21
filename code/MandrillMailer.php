@@ -11,7 +11,7 @@ class MandrillMailer extends Mailer {
         Mandrill::set_api_key ($apiKey);
     }
     
-    function sendPlain ($to, $from, $subject, $plainContent, $attachedFiles = false, $customheaders = false) {
+    function sendPlain ($to, $from, $subject, $plainContent, $attachedFiles = false, $customheaders = false, $tags = false) {
         $args = array ("message" => array (
                 "text" => $plainContent,
                 "subject" => $subject,
@@ -20,7 +20,8 @@ class MandrillMailer extends Mailer {
                     array (
                         "email" => $to
                     )
-                )
+                ),
+                "tags" => $tags
             )
         );
         
@@ -33,7 +34,7 @@ class MandrillMailer extends Mailer {
     }
     
     function sendHTML ($to, $from, $subject, $htmlContent, $attachedFiles = false,
-                       $customheaders = false, $plainContent = false, $inlineImages = false) {
+                       $customheaders = false, $plainContent = false, $inlineImages = false, $tags = false) {
         
         $args = array ("message" => array (
                 "html" => $htmlContent,
@@ -43,7 +44,8 @@ class MandrillMailer extends Mailer {
                     array (
                         "email" => $to
                     )
-                )
+                ),
+                "tags" => $tags
             )
         );
         
