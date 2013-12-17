@@ -58,7 +58,7 @@ class MandrillMailer extends Mailer {
 	}
 
 	public function sendHTML ($to, $from, $subject, $htmlContent, $attachedFiles = false,
-					   $customheaders = false, $plainContent = false, $inlineImages = false, $tags = false)
+						$customheaders = false, $plainContent = false, $inlineImages = false, $tags = false)
 	{
 		$this->cleanCustomHeaders($customheaders);
 
