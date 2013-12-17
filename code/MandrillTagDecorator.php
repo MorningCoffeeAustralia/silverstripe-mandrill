@@ -12,9 +12,11 @@ class MandrillTagDecorator extends DataObjectDecorator {
 	}
 
 	public function updateCMSFields(FieldSet $fields) {
+		$field = new ManyManyDataObjectManager($this->owner, 'Tags', 'MandrillTag');
+		$field->setPermissions(array('add', 'only_related'));
 		$fields->addFieldToTab(
 			'Root.Main',
-			new ManyManyDataObjectManager($this->owner, 'Tags', 'MandrillTag')
+			$field
 		);
 	}
 }
